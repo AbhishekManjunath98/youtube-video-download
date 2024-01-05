@@ -1,4 +1,4 @@
-import LogoImage from "../assets/images/ip.png";
+import LogoImage from "../assets/images/youtube.png";
 
 function Footer(props: any) {
   function footerLinkAction(): void {
@@ -24,32 +24,30 @@ function Footer(props: any) {
 
   return (
     <footer className="w-full">
-      <div className="h-40 md:h-44 w-full mt-24 flex flex-col items-center justify-between bg-black">
+      <div className="h-340px w-full mt-24 flex flex-col items-center justify-between bg-black">
         <div className="w-full m-5 flex items-center justify-center">
           <img alt="" src={LogoImage} className="w-7 h-7" />
           <h1 className="text-center ml-4 text-white font-sans text-lg font-bold">
-            My IP Address
+            Youtube Video Downloader+
           </h1>
         </div>
 
-        {/* <div className="w-100%">
+        <div className="w-100%">
           <div className="p-5 container grid grid-cols-3 md:grid-cols-4 gap-2 w-full">
-            {heading("Sketch Picker")}
-            {heading("Alpha Picker")}
-            {heading("Block Picker")}
-            {heading("Chrome Picker")}
+            {heading("Youtube Video Downloader")}
+            {heading("Youtube Audio Downloader")}
+            {heading("Youtube Shorts Downloader")}
+            {heading("Youtube Thumbnail Downloader")}
 
-            {heading("Circle Picker")}
-            {heading("Compact Picker")}
-            {heading("Github Picker")}
-            {heading("Hue Picker")}
+            {heading("Facebook Video Downloader")}
+            {heading("Facebook Audio Downloader")}
+            {heading("Facebook Thumbnail Downloader")}
 
-            {heading("Material Picker")}
-            {heading("Twitter Picker")}
-            {heading("Photoshop Picker")}
-            {heading("Swatches Picker")} 
+            {heading("Instagram Video Downloader")}
+            {heading("Instagram Audio Downloader")}
+            {heading("Instagram Thumbnail Downloader")}
           </div>
-        </div> */}
+        </div>
 
         <div className="m-4">
           <h5 className="text-center text-white font-sans text-xs font-bold">

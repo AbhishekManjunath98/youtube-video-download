@@ -23,7 +23,7 @@ import {
   Typography,
 } from "@mui/material";
 import ColorImage from "../assets/images/colour.png";
-import LogoImage from "../assets/images/ip.png";
+import LogoImage from "../assets/images/youtube.png";
 import { ColorContext } from "../extras/ColorContext";
 import MenuIcon from "@mui/icons-material/Menu";
 import SingleColor from "./SingleColor";
@@ -194,7 +194,7 @@ function UpMenu(props: any) {
           </IconButton>
         </div>
 
-        <div className="flex items-center">
+        <div className="flex items-center justify-center">
           <img
             alt=""
             src={LogoImage}
@@ -204,7 +204,7 @@ function UpMenu(props: any) {
             style={{ color: headingColor }}
             className="p-5 text-center font-sans text-2xl md:text-4xl font-extrabold"
           >
-            My IP Address
+           Youtube Video Downloader+
           </h1>
         </div>
 

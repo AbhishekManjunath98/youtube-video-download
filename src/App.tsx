@@ -1,9 +1,7 @@
 import { useState } from "react";
 import "./App.css";
-import HomePage from "./pages/HomePage";
 import Footer from "./components/Footer";
 import { ColorContext } from "./extras/ColorContext";
-import YourIP from "./excomponents/YourIp";
 import UpMenu from "./components/UpMenu";
 import Particle from "./components/Particle";
 
@@ -22,7 +20,6 @@ function App() {
           setColor: handleColorChange,
         }}
       >
-        <YourIP />
       </ColorContext.Provider>
 
       <Footer />
