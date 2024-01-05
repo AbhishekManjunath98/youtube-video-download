@@ -190,7 +190,7 @@ function UpMenu(props: any) {
       <div className="w-full flex items-center justify-between border shadow-md">
         <div>
           <IconButton onClick={() => setOpen(true)}>
-            <MenuIcon fontSize="large" />
+            <MenuIcon className="ml-2 md:ml-6" fontSize="large" />
           </IconButton>
         </div>
 
@@ -198,11 +198,11 @@ function UpMenu(props: any) {
           <img
             alt=""
             src={LogoImage}
-            className="w-7 h-7 md:w-14 md:h-14"
+            className="w-10 h-10 md:w-14 md:h-14"
           />
           <h1
             style={{ color: headingColor }}
-            className="p-5 text-center font-sans text-2xl md:text-4xl font-extrabold"
+            className="p-5 text-center font-sans text-sm md:text-4xl font-extrabold"
           >
            Youtube Video Downloader+
           </h1>

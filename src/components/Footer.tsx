@@ -1,4 +1,5 @@
 import LogoImage from "../assets/images/youtube.png";
+import { Link } from "react-router-dom";
 
 function Footer(props: any) {
   function footerLinkAction(): void {
@@ -12,13 +13,13 @@ function Footer(props: any) {
     window.open("https://en.wikipedia.org/wiki/Web_colors", "_blank");
   }
 
-  function heading(heading: string): JSX.Element {
+  function heading(heading: string, url: string): JSX.Element {
     return (
-      <div onClick={openLink}>
+      <Link to={url}>
         <h4 className="text-white text-sm text-centre font-bold hover:cursor-pointer">
           {heading}
         </h4>
-      </div>
+      </Link>
     );
   }
 
@@ -34,18 +35,48 @@ function Footer(props: any) {
 
         <div className="w-100%">
           <div className="p-5 container grid grid-cols-3 md:grid-cols-4 gap-2 w-full">
-            {heading("Youtube Video Downloader")}
-            {heading("Youtube Audio Downloader")}
-            {heading("Youtube Shorts Downloader")}
-            {heading("Youtube Thumbnail Downloader")}
+            {heading(
+              "Youtube Video Downloader",
+              "https://en.wikipedia.org/wiki/Web_colors"
+            )}
+            {heading(
+              "Youtube Audio Downloader",
+              "https://en.wikipedia.org/wiki/Web_colors"
+            )}
+            {heading(
+              "Youtube Shorts Downloader",
+              "https://en.wikipedia.org/wiki/Web_colors"
+            )}
+            {heading(
+              "Youtube Thumbnail Downloader",
+              "https://en.wikipedia.org/wiki/Web_colors"
+            )}
 
-            {heading("Facebook Video Downloader")}
-            {heading("Facebook Audio Downloader")}
-            {heading("Facebook Thumbnail Downloader")}
+            {heading(
+              "Facebook Video Downloader",
+              "https://en.wikipedia.org/wiki/Web_colors"
+            )}
+            {heading(
+              "Facebook Audio Downloader",
+              "https://en.wikipedia.org/wiki/Web_colors"
+            )}
+            {heading(
+              "Facebook Thumbnail Downloader",
+              "https://en.wikipedia.org/wiki/Web_colors"
+            )}
 
-            {heading("Instagram Video Downloader")}
-            {heading("Instagram Audio Downloader")}
-            {heading("Instagram Thumbnail Downloader")}
+            {heading(
+              "Instagram Video Downloader",
+              "https://en.wikipedia.org/wiki/Web_colors"
+            )}
+            {heading(
+              "Instagram Audio Downloader",
+              "https://en.wikipedia.org/wiki/Web_colors"
+            )}
+            {heading(
+              "Instagram Thumbnail Downloader",
+              "https://en.wikipedia.org/wiki/Web_colors"
+            )}
           </div>
         </div>
 
@@ -53,12 +84,11 @@ function Footer(props: any) {
           <h5 className="text-center text-white font-sans text-xs font-bold">
             @Copyright 2024-2030
           </h5>
-          <h5
-            onClick={footerLinkAction}
-            className="text-center hover:cursor-pointer m-1 text-white font-sans text-xs font-bold"
-          >
-            Designed & Developed By Gunjan Sharma
-          </h5>
+          <Link to={"https://www.linkedin.com/in/gunjan-sharma-a74332251/"}>
+            <h5 className="text-center m-1 text-white font-sans text-xs font-bold">
+              Designed & Developed By Gunjan Sharma
+            </h5>
+          </Link>
           <h5 className="xs:mb-5 text-center text-white font-sans text-xs font-bold">
             Made With ❤ In India
           </h5>

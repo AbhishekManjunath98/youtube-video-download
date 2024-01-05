@@ -4,6 +4,7 @@ import Footer from "./components/Footer";
 import { ColorContext } from "./extras/ColorContext";
 import UpMenu from "./components/UpMenu";
 import Particle from "./components/Particle";
+import Home from './pages/HomePage';
 
 function App() {
   const [color, setColor] = useState<string>("");
@@ -20,6 +21,7 @@ function App() {
           setColor: handleColorChange,
         }}
       >
+        <Home />
       </ColorContext.Provider>
 
       <Footer />
