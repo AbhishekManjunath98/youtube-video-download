@@ -40,3 +40,55 @@ export interface IPGeolocationResponse {
 }
 
 export type ResponseKeyValueArray = [string, any][];
+
+export interface Root {
+  message: string;
+  videoUrl: string;
+  videoInfo: VideoInfo;
+  totalDownloadable: number;
+  downloadableFormats: DownloadableFormat[];
+}
+
+export interface VideoInfo {
+  title: string;
+  description: string;
+  totalView: string;
+  channelName: string;
+  hqThumbnail: HqThumbnail;
+  durationInMinutes: number;
+}
+
+export interface HqThumbnail {
+  url: string;
+  width: number;
+  height: number;
+}
+
+export interface DownloadableFormat {
+  mimeType: string;
+  qualityLabel: string;
+  bitrate: number;
+  audioBitrate: number;
+  itag: number;
+  width: number;
+  height: number;
+  lastModified: string;
+  quality: string;
+  fps: number;
+  projectionType: string;
+  audioQuality: string;
+  approxDurationMs: string;
+  audioSampleRate: string;
+  audioChannels: number;
+  url: string;
+  hasVideo: boolean;
+  hasAudio: boolean;
+  container: string;
+  codecs: string;
+  videoCodec: string;
+  audioCodec: string;
+  isLive: boolean;
+  isHLS: boolean;
+  isDashMPD: boolean;
+}
+
