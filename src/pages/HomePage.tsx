@@ -7,10 +7,18 @@ import {
   TextField,
 } from "@mui/material";
 import DownloadImage from "../assets/images/download.png";
-import React, { ChangeEventHandler, useState } from "react";
+import React, {
+  ChangeEventHandler,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import ReactPlayer from "react-player";
 import axios from "axios";
 import { Root } from "../extras/types";
+import { ColorContext } from "../extras/ColorContext";
+import FeatureIntro from "../components/FeatureIntro";
 
 const sampleResponse: Root = {
   message: "success",
@@ -61,18 +69,24 @@ const sampleResponse: Root = {
   ],
 };
 const defUrl = "https://youtu.be/P-z3aLhp9w4?si=7Z8powxCY5o0TswE";
-const API_BASE_URL = `http://192.168.1.88:3003/extras/v1/api/youtube/download-video?videoUrl=`;
-const BASE_API = "http://localhost:3003/";
+const API_BASE_URL = `https://appnor-backend.onrender.com/extras/v1/api/youtube/download-video?videoUrl=`;
 var static_video_url = "";
 
 function HomePage(props: any) {
+  const colorContex = useContext(ColorContext);
+  const scrollRef = useRef<any>(null);
   const [videoUrl, setVideoUrl] = useState("");
   const [downloadUrl, setDownloadUrl] = useState("");
   const [playVideo, setPlayVideo] = useState(false);
-  const [isTermsAggred, setIsTermsAggred] = useState(true);
+  const [isTermsAggred, setIsTermsAggred] = useState(false);
   const [downloadTitle, setDownloadTitle] = useState("");
   const [isDownloadSuccess, setIsDownloadSuccess] = useState(false);
   const [open, setOpen] = React.useState(false);
+
+  useEffect(() => {
+    scrollToDiv();
+    return () => {};
+  }, [colorContex.point]);
 
   const handleClose = () => {
     setOpen(false);
@@ -94,7 +108,7 @@ function HomePage(props: any) {
   }
 
   function pingBackendServer(): void {
-    axios.get(BASE_API).then(
+    axios.get("BASE_API").then(
       (result) => {
         console.log("Hitting Youtube Dpwnload API is successful");
         console.log(result.data);
@@ -154,7 +168,7 @@ function HomePage(props: any) {
         setTimeout(() => {
           handleClose();
           setVideoUrl("");
-        }, 5000);
+        }, 3000);
       },
       (error) => {
         console.log("Something went wrong while hitting data.." + error);
@@ -165,6 +179,11 @@ function HomePage(props: any) {
   }
 
   function handleVideoPlay(): any {
+    if (downloadUrl === "") {
+      alert("You need to download first to play Youtube videos..");
+      return;
+    }
+
     if (videoUrl === "" || !videoUrl.includes("youtu")) {
       alert("A Valid Youtube Video URL is Required!!");
       return;
@@ -179,6 +198,13 @@ function HomePage(props: any) {
       return;
     }
     window.open(downloadUrl, "_blank");
+  }
+
+  function scrollToDiv() {
+    if (colorContex.point !== 0) {
+      scrollRef.current.scrollIntoView({ behavior: "smooth" });
+      colorContex.setPoint(0);
+    }
   }
 
   const backdrop = (
@@ -199,8 +225,16 @@ function HomePage(props: any) {
   );
 
   return (
-    <div className="m-10 flex flex-col items-center justify-center">
+    <div
+      ref={scrollRef}
+      className="md:m-10 sm:m-5 flex flex-col items-center justify-center"
+    >
       {backdrop}
+      <FeatureIntro
+        heading="Supercharged Youtube Video Downloader⚡️"
+        desc="Imagine a world where your favorite online media is yours to keep, not just to stream. With our tool, that world is real! Download high-quality videos, audio, reels, and even thumbnails – all from a single link, completely FREE!"
+        subheading="But it's not just about convenience – it's about freedom. Break free from limited playlists, buffering woes, and the ever-changing algorithms. Save your must-watch content for offline enjoyment. ➡️"
+      />
       <div className="flex flex-col items-center border shadow-lg p-4">
         <TextField
           fullWidth
@@ -224,14 +258,14 @@ function HomePage(props: any) {
         >
           Play Video
         </Button>
-        <h3 className="text-xs text-center w-80 m-2">
+        <h3 className="text-xs text-center w-80 m-2 p-2">
           A direct prompt to download video will get triggered if video has only
           one format else a list of downloadable video will get presented.
         </h3>
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center p-2">
           <Checkbox
             onChange={(e) => setIsTermsAggred(e.target.checked)}
-            defaultChecked
+            defaultChecked={false}
           />
           <h3 className="text-xs text-center m-2">
             By downloading video you agree to our terms & conditions for fair
@@ -268,7 +302,7 @@ function HomePage(props: any) {
               variant="outlined"
               onClick={openLink}
             >
-             Download {downloadTitle}
+              Download {downloadTitle}
             </Button>
           )}
         </div>
@@ -277,13 +311,19 @@ function HomePage(props: any) {
         <div className="w-full sm:w-50px lg:w-1/2 mt-10 mb-10">
           <ReactPlayer
             width="100%"
+            playing={true}
+            loop={true}
             controls={true}
             pip={true}
             volume={1}
-            url={static_video_url}
+            url={downloadUrl}
           />
         </div>
       )}
+      <br />
+      <br />
+      <br />
+      <br />
     </div>
   );
 }
